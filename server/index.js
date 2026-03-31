@@ -1,33 +1,44 @@
 const express = require('express');
 const cors = require('cors');
-const sqlite3 = require('sqlite3').verbose();
+const Database = require('better-sqlite3');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Create / connect SQLite DB
-const db = new sqlite3.Database('./portfolio.db');
+// Connect DB
+const db = new Database('portfolio.db');
 
 // Create table
- db.run(`CREATE TABLE IF NOT EXISTS messages (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  name TEXT,
-  email TEXT,
-  message TEXT
-)`);
+db.prepare(`
+  CREATE TABLE IF NOT EXISTS messages (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    email TEXT,
+    message TEXT
+  )
+`).run();
 
 // API route
 app.post('/contact', (req, res) => {
-  const { name, email, message } = req.body;
-  const sql = `INSERT INTO messages (name, email, message) VALUES (?, ?, ?)`;
+  try {
+    const { name, email, message } = req.body;
 
-  db.run(sql, [name, email, message], function(err) {
-    if (err) {
-      return res.status(500).json({ error: err.message });
-    }
-    res.json({ success: true, id: this.lastID });
-  });
+    const stmt = db.prepare(
+      `INSERT INTO messages (name, email, message) VALUES (?, ?, ?)`
+    );
+
+    const result = stmt.run(name, email, message);
+
+    res.json({ success: true, id: result.lastInsertRowid });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 });
 
-app.listen(5000, () => console.log('Server running on port 5000'));
+// ✅ IMPORTANT for Render
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
