@@ -5,6 +5,13 @@ body {
   color: #e2e8f0;
 }
 
+.section {
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .glass {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
@@ -15,8 +22,14 @@ body {
 
 .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: center;
   padding: 20px 40px;
+  width: 50%;
+  height: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
 }
 
 .navbar a {
@@ -25,9 +38,13 @@ body {
   margin-left: 20px;
 }
 
-.section {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.lnk {
+  padding: 10px;
+}
+
+.lnk:hover {
+  background-color: #38bdf8;
+  color: #000000;
+  border-radius: 8px;
+  transition: all 0.3s ease;
 }
