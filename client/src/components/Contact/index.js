@@ -42,7 +42,7 @@ export default function Contact() {
     if (!validate()) return;
 
     try {
-      await axios.post('http://localhost:5000/contact', form);
+      await axios.post('https://aj-portfolio-rw1o.onrender.com/contact', form);
       alert('Message sent successfully!');
       setForm({ name: '', email: '', message: '' });
       setErrors({});
