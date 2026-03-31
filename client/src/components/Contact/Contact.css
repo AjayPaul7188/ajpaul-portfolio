@@ -1,5 +1,7 @@
 .contact-card {
-  width: 400px;
+  width: 100%;
+  max-width: 420px;
+  margin: auto;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(12px);
   padding: 30px;
@@ -9,9 +11,18 @@
 
 .contact-card h2 {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
+/* Success message */
+.success {
+  text-align: center;
+  color: #22c55e;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* Form */
 form {
   display: flex;
   flex-direction: column;
@@ -27,33 +38,58 @@ label {
 input, textarea {
   padding: 10px;
   border-radius: 8px;
-  border: none;
+  border: 1px solid transparent;
   outline: none;
   background: #0f172a;
   color: #e2e8f0;
+  transition: 0.2s;
 }
 
 input:focus, textarea:focus {
   border: 1px solid #38bdf8;
 }
 
+/* Error input */
+.input-error {
+  border: 1px solid #f87171;
+}
+
+/* Error text */
+.error {
+  color: #f87171;
+  font-size: 12px;
+  margin-top: 3px;
+}
+
+/* Button */
 button {
   margin-top: 15px;
-  padding: 10px;
+  padding: 12px;
   background: #38bdf8;
   border: none;
   border-radius: 10px;
   color: #020617;
   font-weight: bold;
   cursor: pointer;
+  transition: 0.3s;
 }
 
 button:hover {
   background: #0ea5e9;
 }
 
-.error {
-  color: #f87171;
-  font-size: 12px;
-  margin-top: 3px;
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* 📱 MOBILE */
+@media (max-width: 768px) {
+  .contact-card {
+    padding: 20px;
+  }
+
+  button {
+    width: 100%;
+  }
 }

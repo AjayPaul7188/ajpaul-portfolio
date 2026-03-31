@@ -1,32 +1,63 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import './index.css'
+import './index.css';
 
 const projects = [
-  { title: 'Jobby App', liveDemo: 'https://ajjobapp.ccbp.tech/login', github: 'https://github.com/AjayPaul7188/Jobby-App.git', img: '/images/JobImage.jpg', intro: 'Implemented Jobby App where users can log in and can see a list of jobs with search by Job title, filters based on Salary range and Employment type, etc' },
-  { title: 'Emoji Game', liveDemo: 'https://emojigameaj.ccbp.tech/', github: 'https://github.com/AjayPaul7188/Emoji-Game.git', img: '/images/Emojiimage.jpg', intro: 'Bulit an Emoji Game where users can select unique emojies and get score card' },
-  { title: 'Nxt Trends', liveDemo: 'https://ajtrnds.ccbp.tech/login', github: 'https://github.com/AjayPaul7188/nxtTrends.git', img: '/images/TrendsImage.jpg', intro: 'Created a modern e-commerce experience with a design inspired by Amazon and Flipkart.' }
+  {
+    title: 'Jobby App',
+    liveDemo: 'https://ajjobapp.ccbp.tech/login',
+    github: 'https://github.com/AjayPaul7188/Jobby-App.git',
+    img: '/images/JobImage.jpg',
+    intro: 'Job search app with filters, salary range, and authentication.'
+  },
+  {
+    title: 'Emoji Game',
+    liveDemo: 'https://emojigameaj.ccbp.tech/',
+    github: 'https://github.com/AjayPaul7188/Emoji-Game.git',
+    img: '/images/Emojiimage.jpg',
+    intro: 'Interactive emoji game with score tracking and unique selection logic.'
+  },
+  {
+    title: 'Nxt Trends',
+    liveDemo: 'https://ajtrnds.ccbp.tech/login',
+    github: 'https://github.com/AjayPaul7188/nxtTrends.git',
+    img: '/images/TrendsImage.jpg',
+    intro: 'E-commerce UI inspired by Amazon & Flipkart with modern UX.'
+  }
 ];
 
 export default function Projects() {
   return (
     <section className="section">
-      <div className="glass project-section" >
-        <h1 style={{color: '#8b5cf6'}}>Projects</h1>
-        <div className='projects'>
-            {projects.map((p, i) => (
-            <motion.div className='project-tab' key={i} whileHover={{ scale: 1.05 }}>
-                <img className='project-img' src={p.img} alt='Project' />
-                <div>
-                    <h3 style={{color: '#a78bfa', marginBottom: '0px'}}>{p.title}</h3>
-                    <p className='para' style={{fontSize: '12px'}}>{p.intro}</p>
-                </div>
-                <div style={{display: 'flex', alignItems: 'center'}}>
-                    <button className='btn'><a href={p.github} style={{textDecoration: 'none', color: '#000000', fontWeight: '600'}} target='_blank' rel="noreferrer" >GitHub</a></button>
-                    <button className='btn'><a href={p.liveDemo} style={{textDecoration: 'none', color: '#000000', fontWeight: '600'}} target='_blank' rel="noreferrer" >Live Demo</a></button>
-                </div>
+      <div className="glass project-section">
+        <h1 className="project-title">Projects</h1>
+
+        <div className="projects">
+          {projects.map((p, i) => (
+            <motion.div
+              className="project-card"
+              key={i}
+              whileHover={{ scale: 1.05 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.2 }}
+            >
+              <img className="project-img" src={p.img} alt={p.title} />
+
+              <h3>{p.title}</h3>
+              <p>{p.intro}</p>
+
+              <div className="btn-group">
+                <a href={p.github} target="_blank" rel="noreferrer">
+                  <button className="btn">GitHub</button>
+                </a>
+
+                <a href={p.liveDemo} target="_blank" rel="noreferrer">
+                  <button className="btn outline">Live</button>
+                </a>
+              </div>
             </motion.div>
-            ))}
+          ))}
         </div>
       </div>
     </section>
