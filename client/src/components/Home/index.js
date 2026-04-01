@@ -39,7 +39,7 @@ export default function Home() {
               <a className='media' href='https://www.instagram.com/ajay_paul_mummidi' target='_blank' rel="noreferrer">
                 <IoLogoInstagram />
               </a>
-              <a className='media' href='https://www.linkedin.com/in/ajay-paul-mummidi' target='_blank' rel="noreferrer">
+              <a className='media' href='https://www.linkedin.com/in/ajay-paul-mummidi-1133251b8/' target='_blank' rel="noreferrer">
                 <IoLogoLinkedin />
               </a>
             </div>
